@@ -1,0 +1,8 @@
+streamlit
+scikit-learn==1.6.1
+xgboost
+joblib
+numpy
+matplotlib
+shap
+huggingface_hub
