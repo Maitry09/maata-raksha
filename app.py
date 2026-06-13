@@ -4,7 +4,6 @@ import streamlit as st
 import numpy as np
 import joblib
 import json
-import os
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -534,9 +533,7 @@ a[href*="share.streamlit.io"] { display:none !important; }
 @st.cache_resource
 def load_model():
     HF_REPO  = "maitry30/maataraksha-maternal-risk"
-    hf_token = os.getenv("HF_TOKEN") or os.getenv("HUGGING_FACE_HUB_TOKEN")
-    if not hf_token:
-        raise RuntimeError("Set HF_TOKEN or HUGGING_FACE_HUB_TOKEN before running the app.")
+    hf_token = st.secrets["HF_TOKEN"]
 
     model_path  = hf_hub_download(
         repo_id=HF_REPO, filename="maternal_model.pkl",
